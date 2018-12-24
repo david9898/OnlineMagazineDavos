@@ -1,0 +1,11 @@
+body > footer > div:nth-child(1) > p {
+    text-align: center;
+
+}
+body > footer > div:nth-child(2) {
+    padding-left: 20px;
+}
+body > footer > div a {
+    text-decoration: none;
+    color: green;
+}

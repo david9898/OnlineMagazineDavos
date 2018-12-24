@@ -1,0 +1,22 @@
+main {
+    display: block;
+}
+body #main .login {
+    padding-top: 100px;
+    padding-bottom: 50px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding-left: 450px;
+}
+body #main .login h1 {
+    width: 35%;
+    text-align: center;
+    color: #282854;
+}
+body #main .login .form-login {
+    color: #282854;
+    width: 35%;
+    text-align: center;
+}

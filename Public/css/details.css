@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css?family=Gamja+Flower|Inconsolata|Unlock');
+main section .details {
+    border: none;
+    display: flex;
+    padding-bottom: 100px;
+}
+main section .details .all_images img {
+    width: 100px;
+    cursor: pointer;
+    height: 100px;
+    margin-bottom: 10px;
+}
+main section .details .all_images {
+    display: flex;
+    padding: 15px;
+    padding-top: 0;
+    flex-direction: column;
+}
+main section .details .front_view img {
+    width: 600px;
+    height: 500px;
+    cursor: pointer;
+}
+main section .details .articul_details {
+    padding-left: 40px;
+    padding-right: 40px;
+    border: 1px solid black;
+    margin-left: 43px;
+    font-family: 'Inconsolata', monospace;
+    text-align: left;
+    border-radius: 20px;
+}
+main section .details .details_dimention {
+    width: 50px;
+    height: 30px;
+    text-align: center;
+    font-size: 25px;
+    display: inline-block;
+}
+main section .details .details_color {
+    padding: 9px;
+}
+main section .details .details_count {
+    padding: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+main section .details p {
+    margin-bottom: 40px;
+}
+main section .details .details_buy {
+    border: none;
+    font-size: 25px;
+    padding: 7px;
+    color: #282854;
+    cursor: pointer;
+    text-decoration: none;
+}
+.big_image {
+    position: absolute;
+    width: 100%;
+    display: none;
+    text-align: center;
+    padding-left: 150px;
+    background-color: darkred;
+}
+.big_image img {
+    width: 850px;
+    height: 600px;
+}
+main section .big_image .big_image_flex {
+    display: flex;
+}
+main section .big_image .big_image_flex div {
+    display: flex;
+    flex-direction: column;
+}
+main section .big_image .fas {
+    font-size: 65px;
+}
+body > main > section > div > div > div:nth-child(1) {
+    padding-top: 265px;
+}
+body > main > section > div > div > div:nth-child(3) > i.fas.fa-times {
+    margin-bottom: 189px;
+}
+.big_image .fas {
+    cursor: pointer;
+}

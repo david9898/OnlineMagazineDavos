@@ -1,0 +1,14 @@
+.register {
+    width: 100%;
+    padding: 50px;
+}
+
+.register .form-register {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.register h1 {
+    text-align: center;
+}

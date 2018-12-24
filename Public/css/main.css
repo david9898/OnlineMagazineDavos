@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css?family=Unlock');
+@import url('https://fonts.googleapis.com/css?family=Gamja+Flower|Unlock');
+main {
+    display: flex;
+}
+main .page_products_display {
+    padding-left: 50px;
+    padding-top: 40px;
+    display: flex;
+    flex-flow: row wrap;
+}
+main .page_products_display .search_products {
+    margin-right: 55px;
+    margin-bottom: 50px;
+}
+main .page_products_display img {
+    width: 250px;
+    height: 250px;
+}
+main .page_products_display .search_products {
+    text-align: center;
+    border: 1px solid orange;
+    padding: 20px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+main .page_products_display .search_products p {
+    font-family: 'Unlock', cursive;
+    color: #49543D;
+}
+main .page_products_display .search_products h3 {
+    font-family: 'Gamja Flower', cursive;
+    color: #6D7E5B;
+    font-size: 25px;
+    margin: 0;
+}
