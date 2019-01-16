@@ -19,9 +19,7 @@ interface UserRepositoryInterface
 
     public function getLastUserId(): ?UserDTO;
 
-    public function getUserAddresses(int $id): \Generator;
-
-    public function inserUserAddress(string $name, int $id): bool;
-
     public function insertGuest(string $cookie): string;
+
+    public function getUserById(int $id): ?UserDTO;
 }

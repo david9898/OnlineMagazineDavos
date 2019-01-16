@@ -9,7 +9,9 @@
 namespace app\http;
 
 
+use app\repository\AddressRepositoryInterface;
 use app\repository\TownRepositoryInterface;
+use app\services\SecurityServiceInterface;
 use app\services\UserServiceInterface;
 use app\wrapper\CookieWrapper;
 use app\wrapper\GetWrapper;
@@ -102,6 +104,40 @@ class UserHttp extends HttpAbstract
             $cookie = $this->userServ->insertGuest();
 
             $this->cookArr->setCookieElement('authorization', $cookie, 30);
+        }
+    }
+
+    public function profile(TownRepositoryInterface $townRepo, AddressRepositoryInterface $addressRepo)
+    {
+        if ( $this->sessArr->checkSessionExists('id') ) {
+            try {
+                $data = $this->userServ->getUserData($this->sessArr->getSessionElement('id'), $townRepo, $addressRepo);
+
+                $this->render('Users/profile', $data);
+            }catch (\Exception $e) {
+                $data['error'] = $e->getMessage();
+                $this->render('Users/profile', $data);
+            }
+        }else {
+            $this->redirect('/login');
+        }
+    }
+
+    public function insertSecurityPicture(SecurityServiceInterface $service)
+    {
+        if ( $this->sessArr->getSessionElement('status') === 'admin' ) {
+            try {
+                if ( $this->postArr->checkIfExists('security_picture_submit') ) {
+                    $service->insertPicture($this->postArr->getArray(), $_FILES);
+
+                    $this->redirect('/home');
+                }else {
+                    $this->render('Users/addSecurityImage');
+                }
+            }catch (\Exception $e) {
+                $data['error'] = $e->getMessage();
+                $this->render('Users/addSecurityImage', $data);
+            }
         }
     }
 }

@@ -4,6 +4,7 @@ $(document).ready(function () {
     $('body > main > section > article > div.front_view > img').on('click', function () {
         viewCurrentImage()
     })
+    displayBuy()
 })
 function chageImage() {
     $('main section .details .all_images img').on('click', function () {
@@ -39,6 +40,7 @@ function viewCurrentImage() {
     });
     let index = findIndex(allImages, currentImage)
     $('body > main > section > div > div > div:nth-child(2) > img')[0]['src'] = currentImage
+    $('#product_details > article').css('display', 'none')
     $('main section .big_image').css('display', 'block')
     $('body header').css('opacity', '0.1')
     $('body footer').css('opacity', '0.1')
@@ -60,6 +62,7 @@ function viewCurrentImage() {
     })
     $('#exit').on('click', function () {
         $('main section .big_image').css('display', 'none')
+        $('#product_details > article').css('display', 'flex')
         $('body header').css('opacity', '1')
         $('body footer').css('opacity', '1')
     })
@@ -72,4 +75,19 @@ function findIndex(array, url) {
             return i;
         }
     }
+}
+function displayBuy() {
+    $('#button_buy_product').on('click', function () {
+        $('#product_details').css('display', 'none')
+        $('#buy_div').css('display', 'block')
+        $('body header').css('opacity', '0.1')
+        $('body footer').css('opacity', '0.1')
+    })
+
+    $('#buy_product_exit').on('click', function () {
+        $('#product_details').css('display', 'block')
+        $('#buy_div').css('display', 'none')
+        $('body header').css('opacity', '1')
+        $('body footer').css('opacity', '1')
+    })
 }

@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Unlock');
 @import url('https://fonts.googleapis.com/css?family=Gamja+Flower|Unlock');
-main {
+main #pagination_container {
+    margin-top: 100px;
     display: flex;
 }
 main .page_products_display {
@@ -33,4 +34,19 @@ main .page_products_display .search_products h3 {
     color: #6D7E5B;
     font-size: 25px;
     margin: 0;
+}
+main #page_list_pagination {
+    padding-top: 150px;
+    display: flex;
+    justify-content: center;
+}
+main #page_list_pagination a {
+    text-decoration: none;
+    color: #032449;
+    border: 1px solid #032449;
+    padding: 7px;
+}
+main .active {
+    color: #492403;
+    background-color: white;
 }

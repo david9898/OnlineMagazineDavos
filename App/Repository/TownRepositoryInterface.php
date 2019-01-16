@@ -9,7 +9,11 @@
 namespace app\repository;
 
 
+use app\data\TownDTO;
+
 interface TownRepositoryInterface
 {
-    public function getAllTowns(): \Generator ;
+    public function getAllTowns(): \Generator;
+
+    public function getUserTown(int $id): TownDTO;
 }

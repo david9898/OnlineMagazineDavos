@@ -6,6 +6,7 @@ $session = new \app\wrapper\SessionWrapper();
 $cookie = new \app\wrapper\CookieWrapper();
 $postArr = new \app\wrapper\PostWrapper();
 $getArr = new \app\wrapper\GetWrapper();
+$fileArr = new \app\wrapper\FileWrapper();
 $dbConfig = parse_ini_file('Configuration/db.ini');
 $db = new \PDO($dbConfig['dsn'], $dbConfig['user'], $dbConfig['password'], array(PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING));
 $pdo = new \database\PrepareStatement($db);

@@ -20,14 +20,19 @@
     <link rel="stylesheet" type="text/css" media="all" href="http://localhost:82/OnlineMagazine/Public/css/main.css" />
     <link rel="stylesheet" type="text/css" media="all" href="http://localhost:82/OnlineMagazine/Public/css/aside.css" />
     <link rel="stylesheet" type="text/css" media="all" href="http://localhost:82/OnlineMagazine/Public/css/footer.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="http://localhost:82/OnlineMagazine/Public/css/profile.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="http://localhost:82/OnlineMagazine/Public/css/buyProduct.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="http://localhost:82/OnlineMagazine/Public/css/addSecurityPicture.css" />
     <link rel="stylesheet" type="text/css" media="all" href="http://localhost:82/OnlineMagazine/Public/css/register.css" />
-    <link rel="stylesheet" type="text/css" href="node_modules/toastr/build/toastr.min.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="http://localhost:82/OnlineMagazine/Public/css/addProduct.css" />
+    <link rel="stylesheet" type="text/css" href="http://localhost:82/OnlineMagazine/node_modules/toastr/build/toastr.min.css" />
     <script type="text/javascript" src="http://localhost:82/OnlineMagazine/Public/js/menu.js" ></script>
     <script type="text/javascript" src="http://localhost:82/OnlineMagazine/Public/js/aside.js" ></script>
+    <script type="text/javascript" src="http://localhost:82/OnlineMagazine/Public/js/buyProduct.js" ></script>
     <script type="text/javascript" src="http://localhost:82/OnlineMagazine/Public/js/main.js" ></script>
     <script type="text/javascript" src="http://localhost:82/OnlineMagazine/Public/js/details.js" ></script>
     <script type="text/javascript" src="http://localhost:82/OnlineMagazine/Public/js/login.js" ></script>
-    <script type="text/javascript" src="node_modules/toastr/build/toastr.min.js"></script>
+    <script type="text/javascript" src="http://localhost:82/OnlineMagazine/node_modules/toastr/build/toastr.min.js"></script>
 </head>
 <body>
 <header>
@@ -40,8 +45,18 @@
                     <p><i class="fas fa-registered"></i> <a href="http://localhost:82/OnlineMagazine/register">Регистрация</a></p>
                 <?php endif; ?>
                 <?php if ( isset($_SESSION['id']) ): ?>
-                    <p><i class="fas fa-sign-in-alt"></i> <a href="http://localhost:82/OnlineMagazine/profile">Профил</a></p>
-                    <p><i class="fas fa-registered"></i> <a href="http://localhost:82/OnlineMagazine/logout">Изход</a></p>
+                    <?php if ( $_SESSION['status'] === 'admin' ): ?>
+                        <p><i class="fas fa-toolbox"></i>Админ</p>
+                        <div id="admin_panel">
+                            <p><i class="fas fa-plus"></i> <a href="http://localhost:82/OnlineMagazine/add">Добави</a></p>
+                            <p><i class="fas fa-users-cog"></i><a href="http://localhost:82/OnlineMagazine/add">Потребители</a></p>
+                            <p><i class="fas fa-calendar-check"></i><a href="http://localhost:82/OnlineMagazine/add">Най-продавани</a></p>
+                            <p><i class="fas fa-eye"></i><a href="http://localhost:82/OnlineMagazine/add">Най-разглеждани</a></p>
+                            <p><i class="fas fa-shield-alt"></i><a href="http://localhost:82/OnlineMagazine/addSecurityImage">Добави защитена картинка</a></p>
+                        </div>
+                    <?php endif; ?>
+                    <p><i class="fas fa-user"></i> <a href="http://localhost:82/OnlineMagazine/profile">Профил</a></p>
+                    <p><i class="fas fa-sign-out-alt"></i> <a href="http://localhost:82/OnlineMagazine/logout">Изход</a></p>
                 <?php endif; ?>
             </div>
             <div>
@@ -102,4 +117,7 @@
         </ul>
     </nav>
 </header>
+<div>
+
+</div>
 <main id="main">

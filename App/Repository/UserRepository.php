@@ -70,33 +70,6 @@ class UserRepository implements UserRepositoryInterface
         }
     }
 
-    public function getUserAddresses(int $id): \Generator
-    {
-        try {
-            $sql = 'SELECT address_name FROM addresses WHERE user_id = ?';
-
-            return $this->db->prepare($sql)
-                ->execute([$id])
-                ->fetchAssoc();
-        }catch (\PDOException $pdo) {
-            throw new Exception($pdo->getMessage());
-        }
-    }
-
-    public function inserUserAddress(string $name, int $id): bool
-    {
-        try {
-            $sql = 'INSERT INTO addresses(user_id, address_name) VALUES (?, ?)';
-
-            $this->db->prepare($sql)
-                    ->execute([$id, $name]);
-
-            return true;
-        }catch (\PDOException $pdo) {
-            throw new Exception($pdo->getMessage());
-        }
-    }
-
     public function insertGuest(string $cookie): string
     {
         try {
@@ -111,5 +84,19 @@ class UserRepository implements UserRepositoryInterface
         }
     }
 
+    public function getUserById(int $id): ?UserDTO
+    {
+        try {
+            $sql = 'SELECT id, email, password, first_name AS firstName, last_name AS lastName, born_on AS bornOn,
+                first_login AS firstLogin, cookie, status, town FROM users WHERE id = ?';
+
+            return $this->db->prepare($sql)
+                ->execute([$id])
+                ->fetchObject(UserDTO::class)
+                ->current();
+        }catch (\PDOException $e) {
+            $e->getMessage();
+        }
+    }
 
 }

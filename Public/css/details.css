@@ -1,4 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Gamja+Flower|Inconsolata|Unlock');
+#product_details {
+    padding-top: 150px;
+}
 main section .details {
     border: none;
     display: flex;
@@ -85,5 +88,26 @@ body > main > section > div > div > div:nth-child(3) > i.fas.fa-times {
     margin-bottom: 189px;
 }
 .big_image .fas {
+    cursor: pointer;
+}
+main #buy_div {
+    display: none;
+    margin-top: 150px;
+    margin-bottom: 150px;
+    width: 50%;
+    border: 1px solid black;
+    background-color: #ECCEA1;
+    margin-left: 320px;
+    text-align: center;
+    padding: 10px;
+    color: #282870;
+    border-radius: 25px;
+}
+main #buy_product_exit_div {
+    text-align: right;
+    padding-right: 10px;
+    font-size: 20px;
+}
+main #buy_product_exit {
     cursor: pointer;
 }

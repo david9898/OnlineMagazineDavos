@@ -15,15 +15,22 @@ use app\data\ProductDTO;
 
 interface ProductRepositoryInterface
 {
-    public function insertProduct(ProductDTO $product): bool;
+    public function insertProduct(ProductDTO $product, string $image3, string $image4): bool;
 
     public function deleteProduct(int $id): bool;
 
     public function updateProduct(ProductDTO $product): bool;
 
-    public function getProductsForPagination(string $conditions): \Generator;
+    public function getProductsForPagination(int $page, string $sex, int $type, $priceMin = null,
+                                             $priceMax = null, $colors = null, $dimentions = null): \Generator;
 
     public function getProductById(int $id): ProductDTO;
 
-    public function getCount(string $condition): int;
+    public function addProductView(int $id): bool;
+
+    public function addProductSale(int $id): bool;
+
+    public function getCount(int $page, string $sex, int $type, $priceMin = null,
+                             $priceMax = null, $colors = null, $dimentions = null): int;
+
 }

@@ -21,11 +21,26 @@ class ProductDTO
     private $type;
     private $sex;
     private $promotion;
+    private $colorName;
     private $smallDimention;
     private $mediumDimention;
     private $largeDimention;
     private $extraLargeDimention;
     private $promotionPercent;
+    private $dimention34;
+    private $dimention35;
+    private $dimention36;
+    private $dimention37;
+    private $dimention38;
+    private $dimention39;
+    private $dimention40;
+    private $dimention41;
+    private $dimention42;
+    private $dimention43;
+    private $dimention44;
+    private $dimention45;
+    private $dimention46;
+
 
     /**
      * @return mixed
@@ -265,6 +280,118 @@ class ProductDTO
     public function setPromotionPercent($promotionPercent): void
     {
         $this->promotionPercent = $promotionPercent;
+    }
+    
+    public function getDimention34() {
+        return $this->dimention34;
+    }
+
+    public function getDimention35() {
+        return $this->dimention35;
+    }
+
+    public function getDimention36() {
+        return $this->dimention36;
+    }
+
+    public function getDimention37() {
+        return $this->dimention37;
+    }
+
+    public function getDimention38() {
+        return $this->dimention38;
+    }
+
+    public function getDimention39() {
+        return $this->dimention39;
+    }
+
+    public function getDimention40() {
+        return $this->dimention40;
+    }
+
+    public function getDimention41() {
+        return $this->dimention41;
+    }
+
+    public function getDimention42() {
+        return $this->dimention42;
+    }
+
+    public function getDimention43() {
+        return $this->dimention43;
+    }
+
+    public function getDimention44() {
+        return $this->dimention44;
+    }
+
+    public function getDimention45() {
+        return $this->dimention45;
+    }
+
+    public function getDimention46() {
+        return $this->dimention46;
+    }
+
+    public function setDimention34($dimention34) {
+        $this->dimention34 = $dimention34;
+    }
+
+    public function setDimention35($dimention35) {
+        $this->dimention35 = $dimention35;
+    }
+
+    public function setDimention36($dimention36) {
+        $this->dimention36 = $dimention36;
+    }
+
+    public function setDimention37($dimention37) {
+        $this->dimention37 = $dimention37;
+    }
+
+    public function setDimention38($dimention38) {
+        $this->dimention38 = $dimention38;
+    }
+
+    public function setDimention39($dimention39) {
+        $this->dimention39 = $dimention39;
+    }
+
+    public function setDimention40($dimention40) {
+        $this->dimention40 = $dimention40;
+    }
+
+    public function setDimention41($dimention41) {
+        $this->dimention41 = $dimention41;
+    }
+
+    public function setDimention42($dimention42) {
+        $this->dimention42 = $dimention42;
+    }
+
+    public function setDimention43($dimention43) {
+        $this->dimention43 = $dimention43;
+    }
+
+    public function setDimention44($dimention44) {
+        $this->dimention44 = $dimention44;
+    }
+
+    public function setDimention45($dimention45) {
+        $this->dimention45 = $dimention45;
+    }
+
+    public function setDimention46($dimention46) {
+        $this->dimention46 = $dimention46;
+    }
+
+    public function getColorName() {
+        return $this->colorName;
+    }
+
+    public function setColorName($colorName) {
+        $this->colorName = $colorName;
     }
 
 }

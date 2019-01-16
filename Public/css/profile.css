@@ -1,0 +1,29 @@
+.profile{
+    padding-left: 320px;
+    padding-top: 150px;
+    padding-bottom: 150px;
+}
+.profile .profile_div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    font-size: 22px;
+    color: #282854;
+    padding-top: 100px;
+    border: 1px solid black;
+    padding-bottom: 50px;
+    width: 700px;
+    background-color: #ECCEA1;
+    border-radius: 30px;
+}
+.profile .profile_image {
+
+}
+.profile .profile_content {
+}
+.profile img {
+    height: 250px;
+}
+.profile article img {
+    border-radius: 100%;
+}

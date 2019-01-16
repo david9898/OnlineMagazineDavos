@@ -22,19 +22,21 @@ class ProductRepository implements ProductRepositoryInterface
         $this->db = $db;
     }
 
-    public function insertProduct(ProductDTO $product): bool
+    public function insertProduct(ProductDTO $product, $image3, $image4): bool
     {
         try {
-            $sql = 'INSERT INTO products(price, front_image_1, front_image_2, 
-                         color, small_dimention, medium_dimention, 
-                         large_dimention, extra_large_dimention, sex, promotion_percent, promotion, type) 
-                         VALUES (?,?,?,?,?,?,?,?,?,?,?,?)';
+            $sql = 'CALL procedure_insert_product(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
 
             $this->db->prepare($sql)
                     ->execute([$product->getPrice(), $product->getFrontImage1(), $product->getFrontImage2(),
-                        $product->getColor(), $product->getSmallDimention(), $product->getMediumDimention(),
-                        $product->getLargeDimention(), $product->getExtraLargeDimention(), $product->getSex(),
-                        $product->getPromotionPercent(), $product->getPromotion(), $product->getType()]);
+                        $product->getColor(), $product->getSex(),
+                        $product->getPromotionPercent(), $product->getPromotion(), $product->getType(),
+                        $image3, $image4, $product->getSmallDimention(), $product->getMediumDimention(),
+                        $product->getLargeDimention(), $product->getExtraLargeDimention(), $product->getDimention34(),
+                        $product->getDimention35(), $product->getDimention36(), $product->getDimention37(),
+                        $product->getDimention38(), $product->getDimention39(), $product->getDimention40(),
+                        $product->getDimention41(), $product->getDimention42(), $product->getDimention43(),
+                        $product->getDimention44(), $product->getDimention45(), $product->getDimention46()]);
 
             return true;
         }catch (\PDOException $e) {
@@ -78,13 +80,64 @@ class ProductRepository implements ProductRepositoryInterface
         }
     }
 
-    public function getProductsForPagination(string $conditions): \Generator
+    public function getProductsForPagination(int $page, string $sex, int $type, $priceMin = null,
+                                             $priceMax = null, $colors = null, $dimentions = null): \Generator
     {
         try {
-            $sql = 'SELECT id, price, front_image_1 AS frontImage1, front_image_2 AS frontImage2
-                    FROM products WHERE ' . $conditions;
 
+            if ( $page !== 1 ) {
+                $page = ($page * 9) - 9;
+            }
+            if ( $page === 1 ) {
+                $page = 0;
+            }
+
+            $string = " sex = '" . $sex . "' AND `type` = " . $type;
+
+            if ( $colors !== null ) {
+                if ( count($colors) > 1 ) {
+                    $count = count($colors);
+                    for ( $i = 0; $i < $count; $i++ ) {
+                        if ( $i === 0 ) {
+                            $string = $string . ' AND (color = ' . $colors[$i];
+                        }else if ($i === $count - 1) {
+                            $string = $string . ' OR color = ' . $colors[$i] . ' ) ';
+                        }else {
+                            $string = $string . ' OR color = ' . $colors[$i];
+                        }
+                    }
+                } else {
+                    $string = $string . ' AND color = ' . $colors[0];
+                }
+            }else {
+                $string = $string . ' AND color ';
+            }
+            if ( $dimentions !== null ) {
+                if ( count($dimentions) > 1 ) {
+                    $count = count($dimentions);
+                    for ( $i = 0; $i < $count; $i++ ) {
+                        $string = $string . ' AND ' . $dimentions[$i] . ' > 0 ';
+                    }
+                } else {
+                    $string = $string . ' AND ' . $dimentions[0] . ' > 0 ';
+                }
+            }
+            if ( $priceMin !== null) {
+                $string = $string . ' AND price >= ' . $priceMin;
+            }else {
+                $string = $string . ' AND price ';
+            }
+            if ( $priceMax !== null ) {
+                $string = $string . ' AND price <= ' . $priceMax;
+            }
+
+            $string = $string . ' ORDER BY id DESC LIMIT :page, 9';
+
+            $sql = 'SELECT id, price, frontImage1, frontImage2
+                    FROM `product_view` WHERE ' . $string;
+            
             return $this->db->prepare($sql)
+                    ->bindParam(':page', $page, \PDO::PARAM_INT)
                     ->execute()
                     ->fetchObject(ProductDTO::class);
         }catch (\PDOException $e) {
@@ -100,15 +153,93 @@ class ProductRepository implements ProductRepositoryInterface
 
             return $this->db->prepare($sql)
                             ->execute([$id])
-                            ->fetchObject(ProductDTO::class);
+                            ->fetchObject(ProductDTO::class)
+                            ->current();
         }catch (\PDOException $e) {
             $e->getMessage();
         }
     }
 
-    public function getCount(string $condition): int
+    public function getCount(int $page, string $sex, int $type, $priceMin = null,
+                             $priceMax = null, $colors = null, $dimentions = null): int
     {
-        $sql = '';
+        $string = 'sex = "' . $sex . '" AND type = ' . $type;
+
+
+        if ( $colors !== null ) {
+            if ( count($colors) > 1 ) {
+                $count = count($colors);
+                for ( $i = 0; $i < $count; $i++ ) {
+                    if ( $i === 0 ) {
+                        $string = $string . ' AND (color = ' . $colors[$i];
+                    }else if ($i === $count - 1) {
+                        $string = $string . ' OR color = ' . $colors[$i] . ' ) ';
+                    }else {
+                        $string = $string . ' OR color = ' . $colors[$i];
+                    }
+                }
+            } else {
+                $string = $string . ' AND color = ' . $colors[0];
+            }
+        }else {
+            $string = $string . ' AND color ';
+        }
+        if ( $dimentions !== null ) {
+            if ( count($dimentions) > 1 ) {
+                $count = count($dimentions);
+                for ( $i = 0; $i < $count; $i++ ) {
+                    $string = $string . ' AND ' . $dimentions[$i] . ' > 0 ';
+                }
+            } else {
+                $string = $string . ' AND ' . $dimentions[0] . ' > 0 ';
+            }
+        }
+        if ( $priceMin !== null) {
+            $string = $string . ' AND price >= ' . $priceMin;
+        }else {
+            $string = $string . ' AND price ';
+        }
+        if ( $priceMax !== null ) {
+            $string = $string . ' AND price <= ' . $priceMax;
+        }
+
+        $sql = 'SELECT COUNT(*) AS count
+                FROM product_view WHERE ' . $string;
+
+        $count = $this->db->prepare($sql)
+                        ->execute()
+                        ->fetchAssoc()
+                        ->current();
+
+        return $count['count'];
+    }
+
+    public function addProductView(int $id): bool
+    {
+        try {
+            $sql = 'CALL procedure_add_view(?)';
+
+            $this->db->prepare($sql)
+                ->execute([$id]);
+
+            return true;
+        }catch (\PDOException $e) {
+            print_r($e->getMessage());
+        }
+    }
+
+    public function addProductSale(int $id): bool
+    {
+        try {
+            $sql = 'CALL procedure_add_sale(?)';
+
+            $this->db->prepare($sql)
+                    ->execute([$id]);
+
+            return true;
+        }catch (\PDOException $e) {
+            print_r($e->getMessage());
+        }
     }
 
 }

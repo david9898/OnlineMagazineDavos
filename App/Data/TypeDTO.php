@@ -9,7 +9,7 @@
 namespace app\data;
 
 
-class typeDTO
+class TypeDTO
 {
     private $typeId;
     private $typeName;

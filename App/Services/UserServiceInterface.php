@@ -10,12 +10,16 @@ namespace app\services;
 
 
 use app\data\UserDTO;
+use app\repository\AddressRepositoryInterface;
+use app\repository\TownRepositoryInterface;
 
 interface UserServiceInterface
 {
-    public function insertUser(array $postArr, string $cookie): UserDTO;
+    public function insertUser(array $postArr, string $cookie): UserDTO ;
 
-    public function getUserByEmail(array $postArr): ?UserDTO;
+    public function getUserByEmail(array $postArr): ?UserDTO ;
 
     public function insertGuest(): string ;
+
+    public function getUserData(int $id, TownRepositoryInterface $townRepo, AddressRepositoryInterface $addressRepo): array ;
 }

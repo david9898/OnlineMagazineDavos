@@ -1,5 +1,7 @@
 $(document).ready(function () {
     dropDown();
+    sessionStorage.setItem('adminPanel', 'false')
+    adminPanel()
 });
 
 function dropDown() {
@@ -78,5 +80,19 @@ function dropDown() {
 
     $('.new_menu').on('mouseout', function () {
         $('#new_menu').css('display', 'none');
+    })
+}
+
+function adminPanel() {
+
+    $('body header div div div:nth-child(1) p:nth-child(1)').on('click', function () {
+        let condition = sessionStorage.getItem('adminPanel')
+        if ( condition === 'false' ) {
+            $('#admin_panel').css('display', 'block')
+            sessionStorage.setItem('adminPanel', true)
+        }else {
+            $('#admin_panel').css('display', 'none')
+            sessionStorage.setItem('adminPanel', false)
+        }
     })
 }

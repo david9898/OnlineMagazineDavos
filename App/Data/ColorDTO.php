@@ -9,7 +9,7 @@
 namespace app\data;
 
 
-class colorDTO
+class ColorDTO
 {
     private $colorId;
     private $colorName;

@@ -19,7 +19,7 @@ function onhover() {
 }
 
 function onclick() {
-    $('main .search_products article').on('click', function () {
-        window.location.href = 'details ?id=' + $(this)[0]['id']; 
+    $('main .page_products_display .search_products').on('click', function () {
+        console.log('davo');
     })
 }

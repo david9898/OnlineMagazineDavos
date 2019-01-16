@@ -1,0 +1,47 @@
+main #buy_no_register {
+    padding-left: 300px;
+    color: white;
+}
+main #buy_no_register .input-group {
+    width: 50%;
+}
+main #buy_no_register .form-group {
+    width: 50%;
+}
+main .buy_security_image img {
+    width: 400px;
+    height: 200px;
+}
+main .buy_security_image {
+
+}
+main #buy_no_register .form_buy {
+    border: 1px solid black;
+    margin-right: 300px;
+    padding-left: 70px;
+    padding-top: 15px;
+    padding-bottom: 20px;
+    background-color: #A89178;
+}
+main #buy_no_register button {
+    margin-top: 19px;
+}
+main #buy_no_register .span_buy {
+    color: white;
+    background-color: #A89178;
+    padding-right: 15px;
+    padding-left: 15px;
+    text-align: center;
+    cursor: pointer;
+    border: 1px solid black;
+    border-bottom: none;
+}
+main #buy_no_register .div_buy_products {
+
+}
+main #buy_no_register > div > span:nth-child(2) {
+    background-color: #8191A4;
+}
+main #buy_no_register #step_two {
+    display: none;
+}

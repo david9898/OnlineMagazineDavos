@@ -10,6 +10,8 @@ namespace app\services;
 
 
 use app\data\UserDTO;
+use app\repository\AddressRepositoryInterface;
+use app\repository\TownRepositoryInterface;
 use app\repository\UserRepositoryInterface;
 
 class UserService implements UserServiceInterface
@@ -137,5 +139,25 @@ class UserService implements UserServiceInterface
         return $cookie;
     }
 
+    public function getUserData(int $id, TownRepositoryInterface $townRepo, AddressRepositoryInterface $addressRepo): array
+    {
+        $userData = $this->userRepo->getUserById($id);
+
+        $userTown = $townRepo->getUserTown($userData->getTown());
+
+        $userAddresses = $addressRepo->getUserAddresses($id);
+        $addressArr = [];
+
+        foreach ($userAddresses as $userAddress) {
+            $addressArr[] = $userAddresses->current();
+        }
+        $data = [];
+
+        $data['user'] = $userData;
+        $data['town'] = $userTown;
+        $data['addresses'] = $addressArr;
+
+        return $data;
+    }
 
 }
