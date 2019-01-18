@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Toshiba
- * Date: 21.12.2018 г.
- * Time: 23:49 ч.
- */
 
 namespace app\wrapper;
 
@@ -15,7 +9,6 @@ class SessionWrapper
 
     public function __construct()
     {
-        session_start();
         $this->session = $_SESSION;
     }
 

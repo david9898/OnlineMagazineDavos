@@ -225,7 +225,7 @@ if ( !empty($_SESSION['search_params']['priceMax']) && isset($_SESSION['search_p
                         
                     <?php if ( $_GET['type'] !== 'shoes'): ?>
                         <h3>Размери</h3>
-                        <?php if ( in_array('small_dimention', $dimentions) ): ?>
+                        <?php if ( in_array('smallDimention', $dimentions) ): ?>
                             <label>
                                 <input type="checkbox" class="color_checkbox" name="small" checked>S
                             </label>
@@ -234,7 +234,7 @@ if ( !empty($_SESSION['search_params']['priceMax']) && isset($_SESSION['search_p
                                 <input type="checkbox" class="color_checkbox" name="small">S
                             </label>
                         <?php endif; ?>
-                        <?php if ( in_array('medium_dimention', $dimentions) ): ?>
+                        <?php if ( in_array('mediumDimention', $dimentions) ): ?>
                             <label>
                                 <input type="checkbox" class="color_checkbox" name="medium" checked>M
                             </label>
@@ -243,7 +243,7 @@ if ( !empty($_SESSION['search_params']['priceMax']) && isset($_SESSION['search_p
                                 <input type="checkbox" class="color_checkbox" name="medium">M
                             </label>
                         <?php endif; ?>
-                        <?php if ( in_array('large_dimention', $dimentions) ): ?>
+                        <?php if ( in_array('largeDimention', $dimentions) ): ?>
                             <label>
                                 <input type="checkbox" class="color_checkbox" name="large" checked>L
                             </label>
@@ -252,7 +252,7 @@ if ( !empty($_SESSION['search_params']['priceMax']) && isset($_SESSION['search_p
                                 <input type="checkbox" class="color_checkbox" name="large">L
                             </label>
                         <?php endif; ?>
-                        <?php if ( in_array('extra_large_dimention', $dimentions) ): ?>
+                        <?php if ( in_array('extraLargeDimention', $dimentions) ): ?>
                             <label>
                                 <input type="checkbox" class="color_checkbox" name="extra_large" checked>XL
                             </label>
@@ -279,15 +279,18 @@ if ( !empty($_SESSION['search_params']['priceMax']) && isset($_SESSION['search_p
 
     <section class="page_products_display">
         <?php foreach ($data['pagination']->getProductArr() as $product ): ?>
-            <a href="http://localhost:82/OnlineMagazine/product/<?php echo $product->getId(); ?>">
+            
                 <article id="<?php echo $product->getId() ?>" class="search_products">
+                    <a href="http://localhost:82/OnlineMagazine/product/<?php echo $product->getId(); ?>">
                     <img src="http://localhost:82/OnlineMagazine/Images/<?php echo $product->getFrontImage1() ?>" alt="http://localhost:82/OnlineMagazine/Images/<?php echo $product->getFrontImage2()?>" />
                     <div>
-                        <p>Мъжко яке</p>
+                        <p><?php echo $product->getDescription(); ?></p>
                         <h3><?php echo $product->getPrice() . ' лв.' ?></h3>
-                </div>
-            </article>
-            </a>
+                    </div>
+                    </a>
+                    <button id="add_to_basket" product_id="<?php echo $product->getId(); ?>" class="add_to_basket btn btn-success"><i class="fas fa-shopping-cart"></i> Добави</button>
+                </article>
+            
         <?php endforeach; ?>
     </section>
 

@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Toshiba
- * Date: 23.12.2018 г.
- * Time: 11:51 ч.
- */
 
 namespace router;
 

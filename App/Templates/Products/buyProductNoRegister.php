@@ -1,3 +1,7 @@
+<?php
+    $randomNumber = rand(0, 3);
+    $_SESSION['trueAnswer'] = $data['answers'][$randomNumber]->getCode();
+?>
 <section id="buy_no_register">
     <div class="div_buy_products">
         <span class="span_buy" visible="step_one">Стъпка 1</span>
@@ -49,20 +53,61 @@
         </div>
 
         <div id="step_two">
-
-            <div class="form-group">
-                <label for="sel1">Избери цвят: *</label>
-                <select name="delivery" class="form-control" id="sel1">
-                    <option value="еконт">Еконт</option>
-                    <option value="спиди">Спиди</option>
-                </select>
-            </div>
             
             <div class="form-group">
                 <label for="sel1">Избери размер: *</label>
-                <select name="delivery" class="form-control" id="sel1">
-                    <option value="еконт">Еконт</option>
-                    <option value="спиди">Спиди</option>
+                <select name="dimention" class="form-control" id="sel1">
+                    <?php if ( $data['dimentions']->getDimention34() > 0 ): ?>
+                        <option value="34">34</option>
+                    <?php endif; ?>
+                    <?php if ( $data['dimentions']->getDimention35() > 0 ): ?>
+                        <option value="35">35</option>
+                    <?php endif; ?>
+                    <?php if ( $data['dimentions']->getDimention36() > 0 ): ?>
+                        <option value="36">36</option>
+                    <?php endif; ?>
+                    <?php if ( $data['dimentions']->getDimention37() > 0 ): ?>
+                        <option value="37">37</option>
+                    <?php endif; ?>
+                    <?php if ( $data['dimentions']->getDimention38() > 0 ): ?>
+                        <option value="38">38</option>
+                    <?php endif; ?>
+                    <?php if ( $data['dimentions']->getDimention39() > 0 ): ?>
+                        <option value="39">39</option>
+                    <?php endif; ?>
+                    <?php if ( $data['dimentions']->getDimention40() > 0 ): ?>
+                        <option value="40">40</option>
+                    <?php endif; ?>
+                    <?php if ( $data['dimentions']->getDimention41() > 0 ): ?>
+                        <option value="41">41</option>
+                    <?php endif; ?>
+                    <?php if ( $data['dimentions']->getDimention42() > 0 ): ?>
+                        <option value="42">42</option>
+                    <?php endif; ?>
+                    <?php if ( $data['dimentions']->getDimention43() > 0 ): ?>
+                        <option value="43">43</option>
+                    <?php endif; ?>
+                    <?php if ( $data['dimentions']->getDimention44() > 0 ): ?>
+                        <option value="44">44</option>
+                    <?php endif; ?>
+                    <?php if ( $data['dimentions']->getDimention45() > 0 ): ?>
+                        <option value="45">45</option>
+                    <?php endif; ?>
+                    <?php if ( $data['dimentions']->getDimention46() > 0 ): ?>
+                        <option value="46">46</option>
+                    <?php endif; ?>
+                    <?php if ( $data['dimentions']->getSmallDimention() > 0 ): ?>
+                        <option value="S">S</option>
+                    <?php endif; ?>
+                    <?php if ( $data['dimentions']->getMediumDimention() > 0 ): ?>
+                        <option value="M">M</option>
+                    <?php endif; ?>
+                    <?php if ( $data['dimentions']->getLargeDimention() > 0 ): ?>
+                        <option value="L">L</option>
+                    <?php endif; ?>
+                    <?php if ( $data['dimentions']->getExtraLargeDimention() > 0 ): ?>
+                        <option value="Xl">XL</option>
+                    <?php endif; ?>                            
                 </select>
             </div>
             
@@ -83,13 +128,13 @@
             </div>
 
             <div class="buy_security_image">
-                <p><?php /* @var $data \app\data\SecurityPictureDTO */ echo $data['answers'][0]->getQuestion(); ?></p>
-                <img src="<?php echo 'http://localhost:82/OnlineMagazine/Images/' . $data['answers'][0]->getImageName() ?>">
-                <?php foreach ($data['answers'] as $val): ?>
+                <p><?php /* @var $data \app\data\SecurityPictureDTO */ echo $data['answers'][$randomNumber]->getQuestion(); ?></p>
+                <img src="<?php echo 'http://localhost:82/OnlineMagazine/Images/' . $data['answers'][$randomNumber]->getImageName() ?>">
+                <?php for ($i = 0; $i < count($data['answers']); $i++): ?>
                     <div class="radio">
-                        <label><input type="radio" name="<?php echo $val->getCode(); ?>" ><?php /* @var $val \app\data\SecurityPictureDTO */ echo $val->getCode(); ?></label>
+                        <label><input type="radio" name="<?php echo $data['answers'][$i]->getCode(); ?>" ><?php /* @var $val \app\data\SecurityPictureDTO */ echo $data['answers'][$i]->getCode(); ?></label>
                     </div>    
-                <?php endforeach; ?>
+                <?php endfor; ?>
             </div>
 
             <input type="submit" name="buy_product_form_submit" class="btn btn-info">

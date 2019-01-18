@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Toshiba
- * Date: 13.12.2018 г.
- * Time: 15:36 ч.
- */
 
 namespace app\data;
 
@@ -20,6 +14,7 @@ class ProductDTO
     private $sells;
     private $type;
     private $sex;
+    private $description;
     private $promotion;
     private $colorName;
     private $smallDimention;
@@ -393,5 +388,13 @@ class ProductDTO
     public function setColorName($colorName) {
         $this->colorName = $colorName;
     }
+    
+    public function getDescription() {
+        return $this->description;
+    }
 
+    public function setDescription($description) {
+        $this->description = $description;
+    }
+    
 }

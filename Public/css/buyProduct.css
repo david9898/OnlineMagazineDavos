@@ -1,6 +1,8 @@
 main #buy_no_register {
+    margin-top:  120px;
     padding-left: 300px;
     color: white;
+    margin-bottom: 100px;
 }
 main #buy_no_register .input-group {
     width: 50%;

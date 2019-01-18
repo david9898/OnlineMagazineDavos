@@ -9,6 +9,14 @@
                     </div>
                     <input type="text" class="form-control" placeholder="Цена" name="add_product_price">
                 </div>
+                
+                <p>Описание: *</p>
+                <div class="input-group input-add mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-text-width"></i></span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="Описание" name="add_product_description">
+                </div>
 
                 <p>Снимки: *</p>
                 <input type="file" name="images[]" multiple="">

@@ -17,4 +17,6 @@ interface ProductServiceInterface
     public function addProductSale(int $id): bool ;
     
     public function buyProduct(int $id, array $postArr): bool ;
+    
+    public function getProductDimentions(int $id): ProductDTO;
 }

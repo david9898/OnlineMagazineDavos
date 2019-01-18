@@ -67,7 +67,13 @@
             </div>
             <div>
                 <p>Количка</p>
-                <span class="basket_span">0</span>
+                <span class="basket_span"><?php 
+                    if ( isset($_SESSION['basket']) ) {
+                        echo count($_SESSION['basket']); 
+                    }else {
+                        echo 0;
+                    }
+                ?></span>
                 <a href="http://localhost:82/OnlineMagazine/basket"><i class="fas fa-shopping-cart"></i></a>
             </div>
         </div>

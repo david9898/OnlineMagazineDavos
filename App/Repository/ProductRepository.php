@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Toshiba
- * Date: 15.12.2018 г.
- * Time: 17:49 ч.
- */
 
 namespace app\repository;
 
@@ -25,7 +19,7 @@ class ProductRepository implements ProductRepositoryInterface
     public function insertProduct(ProductDTO $product, $image3, $image4): bool
     {
         try {
-            $sql = 'CALL procedure_insert_product(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
+            $sql = 'CALL procedure_insert_product(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
 
             $this->db->prepare($sql)
                     ->execute([$product->getPrice(), $product->getFrontImage1(), $product->getFrontImage2(),
@@ -36,7 +30,8 @@ class ProductRepository implements ProductRepositoryInterface
                         $product->getDimention35(), $product->getDimention36(), $product->getDimention37(),
                         $product->getDimention38(), $product->getDimention39(), $product->getDimention40(),
                         $product->getDimention41(), $product->getDimention42(), $product->getDimention43(),
-                        $product->getDimention44(), $product->getDimention45(), $product->getDimention46()]);
+                        $product->getDimention44(), $product->getDimention45(), $product->getDimention46(),
+                        $product->getDescription()]);
 
             return true;
         }catch (\PDOException $e) {
@@ -133,7 +128,7 @@ class ProductRepository implements ProductRepositoryInterface
 
             $string = $string . ' ORDER BY id DESC LIMIT :page, 9';
 
-            $sql = 'SELECT id, price, frontImage1, frontImage2
+            $sql = 'SELECT id, price, frontImage1, frontImage2, description
                     FROM `product_view` WHERE ' . $string;
             
             return $this->db->prepare($sql)
@@ -242,4 +237,16 @@ class ProductRepository implements ProductRepositoryInterface
         }
     }
 
+    public function getDimentions(int $id): ProductDTO {
+        try {
+            $sql = 'SELECT * FROM product_view WHERE id = ?';
+
+            return $this->db->prepare($sql)
+                    ->execute([$id])
+                    ->fetchObject(ProductDTO::class)
+                    ->current();
+        } catch (\PDOException $e) {
+            print_r($e->getMessage());
+        }
+    }
 }

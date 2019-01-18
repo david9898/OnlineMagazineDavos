@@ -106,14 +106,17 @@ class ProductHttp extends HttpAbstract
                     }else {
                         $data['error'] = 'Не сте отговорили правилно на въпроса!!!';
                         $data['answers'] = ProductHttp::generateSecurityImages($secRepo);
+                        $data['dimentions'] = $this->productService->getProductDimentions($this->getArr->getElement('id'));
                         $this->render('Products/buyProductNoRegister', $data);
                     }
                 }else {
+                    $data['dimentions'] = $this->productService->getProductDimentions($this->getArr->getElement('id'));
                     $data['answers'] = ProductHttp::generateSecurityImages($secRepo);
                     $this->render('Products/buyProductNoRegister', $data);
                 }
             } catch (\Exception $e) {
                 $data['error'] = $e->getMessage();
+                $data['dimentions'] = $this->productService->getProductDimentions($this->getArr->getElement('id'));
                 $data['answers'] = ProductHttp::generateSecurityImages($secRepo);
                 $this->render('Products/buyProductNoRegister', $data);
             }
@@ -149,7 +152,6 @@ class ProductHttp extends HttpAbstract
 
         $data = [];
         $data[] = $secRepo->getSecurityPicture($rand1);
-        $_SESSION['trueAnswer'] = $secRepo->getSecurityPicture($rand1)->getCode();
         $data[] = $secRepo->getSecurityPicture($rand2);
         $data[] = $secRepo->getSecurityPicture($rand3);
         $data[] = $secRepo->getSecurityPicture($rand4);

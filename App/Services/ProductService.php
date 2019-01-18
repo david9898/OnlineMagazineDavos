@@ -134,6 +134,7 @@ class ProductService implements ProductServiceInterface
         $product->setMediumDimention($mediumDim);
         $product->setLargeDimention($largeDim);
         $product->setExtraLargeDimention($extraLargeDim);
+        $product->setDescription($postArr['add_product_description']);
         $product->setSex($postArr['add_product_sex']);
         $product->setPromotionPercent($postArr['add_product_promotion_percent']);
         $product->setPromotion($postArr['add_product_promotion']);
@@ -271,16 +272,16 @@ class ProductService implements ProductServiceInterface
             $dimentions = null;
 
             if (isset($postArr['small'])) {
-                $dimentions[] = 'small_dimention';
+                $dimentions[] = 'smallDimention';
             }
             if (isset($postArr['medium'])) {
-                $dimentions[] = 'medium_dimention';
+                $dimentions[] = 'mediumDimention';
             }
             if (isset($postArr['large'])) {
-                $dimentions[] = 'large_dimention';
+                $dimentions[] = 'largeDimention';
             }
             if (isset($postArr['extra_large'])) {
-                $dimentions[] = 'extra_large_dimention';
+                $dimentions[] = 'extraLargeDimention';
             }
             if (isset($postArr['dimention_34'])) {
                 $dimentions[] = 'dimention34';
@@ -436,6 +437,10 @@ class ProductService implements ProductServiceInterface
             throw new \Exception('Трябва да попълните вашия адрес');
         }
         
+        if ( !isset($postArr['dimention']) || empty($postArr['dimention']) ) {
+            throw new \Exception('Трябва да изберете размер');
+        }
+        
         $message = '<div><img src="http://localhost:82/OnlineMagazine/Images/' . $productData->getFrontImage1() . '" width=350 height=250></div>'
                 . '<p>Име: ' . $postArr['buy_product_name'] . '</p>'
                 . '<p>Фамилия: ' . $postArr['buy_product_last_name'] . '</p>'
@@ -443,7 +448,9 @@ class ProductService implements ProductServiceInterface
                 . '<p>Град: ' . $postArr['buy_product_town'] . '</p>'
                 . '<p>Адрес: ' . $postArr['buy_product_address'] . '</p>'
                 . '<p>Куриерска фирма: ' . $postArr['delivery'] . '</p>'
-                . '<p>Плащане: ' . $postArr['type_payment'] . '</p>';
+                . '<p>Плащане: ' . $postArr['type_payment'] . '</p>'
+                . '<p>Размер: ' . $postArr['dimention'] . '</p>';
+
         
         $this->addProductSale($id);
         
@@ -478,5 +485,9 @@ class ProductService implements ProductServiceInterface
         } catch (Exception $e) {
             echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
         }
+    }
+    
+    public function getProductDimentions(int $id): ProductDTO {
+        return $this->productRepo->getDimentions($id);
     }
 }

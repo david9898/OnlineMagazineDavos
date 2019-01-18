@@ -33,4 +33,5 @@ interface ProductRepositoryInterface
     public function getCount(int $page, string $sex, int $type, $priceMin = null,
                              $priceMax = null, $colors = null, $dimentions = null): int;
 
+    public function getDimentions(int $id): ProductDTO;
 }
