@@ -1,11 +1,4 @@
 <?php
-/**
- *
- * Created by PhpStorm.
- * User: Toshiba
- * Date: 15.12.2018 г.
- * Time: 17:42 ч.
- */
 
 namespace app\repository;
 
@@ -28,10 +21,12 @@ interface ProductRepositoryInterface
 
     public function addProductView(int $id): bool;
 
-    public function addProductSale(int $id): bool;
+    public function addProductSale(int $id, string $cookie): bool;
 
     public function getCount(int $page, string $sex, int $type, $priceMin = null,
                              $priceMax = null, $colors = null, $dimentions = null): int;
 
     public function getDimentions(int $id): ProductDTO;
+    
+    public function getProductForBasket(array $basket): \Generator;
 }

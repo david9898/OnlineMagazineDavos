@@ -223,13 +223,13 @@ class ProductRepository implements ProductRepositoryInterface
         }
     }
 
-    public function addProductSale(int $id): bool
+    public function addProductSale(int $id, string $cookie): bool
     {
         try {
-            $sql = 'CALL procedure_add_sale(?)';
+            $sql = 'CALL procedure_add_sale(?, ?)';
 
             $this->db->prepare($sql)
-                    ->execute([$id]);
+                    ->execute([$id, $cookie]);
 
             return true;
         }catch (\PDOException $e) {
@@ -249,4 +249,21 @@ class ProductRepository implements ProductRepositoryInterface
             print_r($e->getMessage());
         }
     }
+    
+    public function getProductForBasket(array $basket): \Generator {
+        
+        $sql = 'SELECT * FROM product_view WHERE id = ' . $basket[0];
+        
+        if ( count($basket) > 1 ) {
+            for ($i = 1; $i < count($basket); $i++) {
+                $sql = $sql . ' OR id = ' . $basket[$i];
+            }
+        }
+        
+        return $this->db->prepare($sql)
+                ->execute()
+                ->fetchObject(ProductDTO::class);
+    }
+    
+    
 }

@@ -406,9 +406,9 @@ class ProductService implements ProductServiceInterface
         return $this->productRepo->getProductById($id);
     }
 
-    public function addProductSale(int $id): bool
+    public function addProductSale(int $id, string $cookie): bool
     {
-        $this->productRepo->addProductSale($id);
+        $this->productRepo->addProductSale($id, $cookie);
 
         return true;
     }
@@ -452,7 +452,7 @@ class ProductService implements ProductServiceInterface
                 . '<p>Размер: ' . $postArr['dimention'] . '</p>';
 
         
-        $this->addProductSale($id);
+        $this->addProductSale($id, $_COOKIE['authorization']);
         
         $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
 
@@ -490,4 +490,102 @@ class ProductService implements ProductServiceInterface
     public function getProductDimentions(int $id): ProductDTO {
         return $this->productRepo->getDimentions($id);
     }
+    
+    public function getProductsForBasket(array $basketArr): ?array {
+        
+        if ( count($basketArr) !== 0 ) {
+            $data = $this->productRepo->getProductForBasket($basketArr);
+            foreach ($data as $val) {
+                $arr[] = $val;
+            }
+            return $arr;
+        }else {
+            return null;
+        }
+    }
+    
+    public function buyProductsFromBasket(array $postArr): bool {
+        
+        if ( !isset($postArr['buy_product_name']) || empty($postArr['buy_product_name']) ) {
+            throw new \Exception('Трябва да попълните вашето име');
+        }
+        
+        if ( !isset($postArr['buy_product_last_name']) || empty($postArr['buy_product_last_name']) ) {
+            throw new \Exception('Трябва да попълните вашата фамилия');
+        }
+        
+        if ( !isset($postArr['buy_product_phone']) || empty($postArr['buy_product_phone']) ) {
+            throw new \Exception('Трябва да попълните вашия телефон');
+        }
+        
+        if ( !isset($postArr['buy_product_town']) || empty($postArr['buy_product_town']) ) {
+            throw new \Exception('Трябва да попълните вашия град');
+        }
+        
+        if ( !isset($postArr['buy_product_address']) || empty($postArr['buy_product_address']) ) {
+            throw new \Exception('Трябва да попълните вашия адрес');
+        }
+        
+        if ( !isset($postArr['dimention']) || empty($postArr['dimention']) ) {
+            throw new \Exception('Трябва да изберете размер на всеки продукт');
+        }
+        
+        if ( !isset($postArr['count']) || empty($postArr['count']) ) {
+            throw new \Exception('Трябва да изберете брой на всеки продут');
+        }
+        
+        $message = '<p>Име: ' . $postArr['buy_product_name'] . '</p>' .
+                   '<p>Фамилия: ' . $postArr['buy_product_last_name'] . '</p>' .
+                   '<p>Телефон: ' . $postArr['buy_product_phone'] . '</p>' . 
+                   '<p>Град: ' . $postArr['buy_product_town'] . '</p>' . 
+                   '<p>Адрес: ' . $postArr['buy_product_address'] . '</p>' . '<br /><br />';
+        
+        for ($i = 0; $i < count($postArr['dimention']); $i++) {
+            $message = $message . '<div><img src="http://localhost:82/OnlineMagazine/Images/'
+                    . $postArr['picture'][$i] . '" width=350 height=250 />'
+                    . '<p>Размер: ' . $postArr['dimention'][$i] . '</p>'
+                    . '<p>Брой: ' . $postArr['count'][$i] . '</p><br /><br />';
+        }
+        
+        foreach ($postArr['id'] as $id) {
+            $this->productRepo->addProductSale($id, $_COOKIE['authorization']);
+        }
+        
+        $_SESSION['basket'] = [];
+        
+        $mail = new PHPMailer(true);
+        
+        try {
+            //Server settings
+            $mail->SMTPDebug = 2;                                 // Enable verbose debug output
+            $mail->isSMTP();                                      // Set mailer to use SMTP
+            $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
+            $mail->SMTPAuth = true;                               // Enable SMTP authentication
+            $mail->Username = 'postur5213@gmail.com';                 // SMTP username
+            $mail->Password = '258444666';                           // SMTP password
+            $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+            $mail->Port = 587;                                    // TCP port to connect to
+            
+            //Recipients
+            $mail->setFrom('davosss@gmail.com', 'Davosss');
+            $mail->addAddress('david_786@abv.bg', 'Davosss');     // Add a recipient
+
+            //Content
+            $mail->isHTML(true);                                  // Set email format to HTML
+            $mail->Subject = 'Имате нова продажба!!!';
+            $mail->Body    = $message;
+            $mail->AltBody = 'Има грешка с поръчката!!!';
+
+            $mail->CharSet = 'UTF-8';
+            
+            $mail->send();
+            
+            return true;
+        } catch (Exception $e) {
+            echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
+        }
+        
+        return true;
+    }
+
 }

@@ -26,7 +26,7 @@ function addToBasket() {
             type: 'POST',
             url: 'http://localhost:82/OnlineMagazine/index.php',
             data: {
-                'addToBasket': true,
+                'ajax': 'addToBasket',
                 'id': id
             },
             headers: {

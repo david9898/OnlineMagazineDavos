@@ -158,4 +158,22 @@ class ProductHttp extends HttpAbstract
 
         return $data;
     }
+    
+    public function BuyFromBasket() {
+        if ( $this->postArr->checkIfExists('send_basket') ) {
+            try {
+                $this->productService->buyProductsFromBasket($this->postArr->getArray());
+                echo '<script>document.location.href = "http://localhost:82/OnlineMagazine/home"</script>';
+            } catch (\Exception $e) {
+                $data['error'] = $e->getMessage();
+                $this->render('Products/buyProductFromBasket', $data);
+            }
+        }else {
+            $data['products'] = $this->productService->getProductsForBasket($this->sessionArr->getSessionElement('basket'));
+            
+            $this->render('Products/buyProductFromBasket', $data);
+        }
+        
+        
+    }
 }

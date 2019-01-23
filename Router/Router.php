@@ -52,6 +52,11 @@ class Router
 
                 case 'addSecurityImage':
                     require_once 'FrontLayer/insertSecurityImage.php';
+                    break;
+                
+                case 'basket':
+                    require 'FrontLayer/buyProductFromBasket.php';
+                    break;
             }
         }
     }

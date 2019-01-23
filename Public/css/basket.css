@@ -1,0 +1,55 @@
+.basket_section {
+    margin-left: 50px;
+    margin-top: 120px;
+    margin-bottom: 50px;
+}
+.basket_section img {
+    width: 150px;
+}
+.basket_section th {
+    width: 150px;
+}
+.basket_section table {
+    border-collapse: collapse;
+    border-bottom: none;
+}
+.basket_section table, th, td {
+    border: 1px solid;
+    text-align: center;
+}
+.basket_section .td_none {
+    border: none;
+}
+.basket_section .tr_none {
+    border: none;
+}
+.basket_section .bascet_btn {
+    text-decoration: none;
+    margin-top: 15px;
+    width: 100px;
+    background-color: #419641;
+    border: none;
+    padding: 7px;
+    color: white;
+    cursor: pointer;
+    border-radius: 10px;
+}
+.basket_section .bascet_btn:hover {
+    background-color: #2A642A;
+}
+.basket_section #step_one {
+    width: 40%;
+    background-color: #A89178;
+    padding: 30px;
+    border-radius: 20px;
+    margin-left: 350px;
+    display: none;
+}
+.basket_section #step_one .basket_exit_address_form {
+    text-align: right;
+    font-size: 25px;
+}
+.basket_section #step_one .basket_exit_address_form i:hover {
+    color: #E1DAD1;
+    cursor: pointer;
+}

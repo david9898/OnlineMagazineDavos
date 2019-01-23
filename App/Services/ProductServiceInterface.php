@@ -14,9 +14,13 @@ interface ProductServiceInterface
 
     public function getProductById(int $id): ProductDTO;
 
-    public function addProductSale(int $id): bool ;
+    public function addProductSale(int $id, string $cookie): bool ;
     
     public function buyProduct(int $id, array $postArr): bool ;
     
     public function getProductDimentions(int $id): ProductDTO;
+    
+    public function getProductsForBasket(array $basketArr): ?array;
+    
+    public function buyProductsFromBasket(array $postArr): bool ;
 }

@@ -25,6 +25,7 @@
     <link rel="stylesheet" type="text/css" media="all" href="http://localhost:82/OnlineMagazine/Public/css/addSecurityPicture.css" />
     <link rel="stylesheet" type="text/css" media="all" href="http://localhost:82/OnlineMagazine/Public/css/register.css" />
     <link rel="stylesheet" type="text/css" media="all" href="http://localhost:82/OnlineMagazine/Public/css/addProduct.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="http://localhost:82/OnlineMagazine/Public/css/basket.css" />
     <link rel="stylesheet" type="text/css" href="http://localhost:82/OnlineMagazine/node_modules/toastr/build/toastr.min.css" />
     <script type="text/javascript" src="http://localhost:82/OnlineMagazine/Public/js/menu.js" ></script>
     <script type="text/javascript" src="http://localhost:82/OnlineMagazine/Public/js/aside.js" ></script>
@@ -32,6 +33,7 @@
     <script type="text/javascript" src="http://localhost:82/OnlineMagazine/Public/js/main.js" ></script>
     <script type="text/javascript" src="http://localhost:82/OnlineMagazine/Public/js/details.js" ></script>
     <script type="text/javascript" src="http://localhost:82/OnlineMagazine/Public/js/login.js" ></script>
+    <script type="text/javascript" src="http://localhost:82/OnlineMagazine/Public/js/basket.js" ></script>
     <script type="text/javascript" src="http://localhost:82/OnlineMagazine/node_modules/toastr/build/toastr.min.js"></script>
 </head>
 <body>
