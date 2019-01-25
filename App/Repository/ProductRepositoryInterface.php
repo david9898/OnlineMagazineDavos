@@ -15,7 +15,7 @@ interface ProductRepositoryInterface
     public function updateProduct(ProductDTO $product): bool;
 
     public function getProductsForPagination(int $page, string $sex, int $type, $priceMin = null,
-                                             $priceMax = null, $colors = null, $dimentions = null): \Generator;
+                                             $priceMax = null, $colors = null, $dimentions = null, $sexTypes = null): \Generator;
 
     public function getProductById(int $id): ProductDTO;
 
@@ -24,7 +24,7 @@ interface ProductRepositoryInterface
     public function addProductSale(int $id, string $cookie): bool;
 
     public function getCount(int $page, string $sex, int $type, $priceMin = null,
-                             $priceMax = null, $colors = null, $dimentions = null): int;
+                             $priceMax = null, $colors = null, $dimentions = null, $sexTypes = null): int;
 
     public function getDimentions(int $id): ProductDTO;
     

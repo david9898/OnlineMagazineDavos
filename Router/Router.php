@@ -57,6 +57,10 @@ class Router
                 case 'basket':
                     require 'FrontLayer/buyProductFromBasket.php';
                     break;
+                
+                case 'home':
+                    require_once 'FrontLayer/home.php';
+                    break;
             }
         }
     }

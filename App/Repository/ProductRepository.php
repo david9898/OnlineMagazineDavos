@@ -76,7 +76,7 @@ class ProductRepository implements ProductRepositoryInterface
     }
 
     public function getProductsForPagination(int $page, string $sex, int $type, $priceMin = null,
-                                             $priceMax = null, $colors = null, $dimentions = null): \Generator
+                                             $priceMax = null, $colors = null, $dimentions = null, $sexTypes = null): \Generator
     {
         try {
 
@@ -86,9 +86,26 @@ class ProductRepository implements ProductRepositoryInterface
             if ( $page === 1 ) {
                 $page = 0;
             }
+            
+            if ( $sex === 'Male' || $sex === 'Female' ) {
+                $string = " sex = '" . $sex . "' AND `type` = " . $type;
+            }else if ( $sex === 'promotion' ) {
+                $string = ' promotion = true AND `type` = ' . $type;
+            }
 
-            $string = " sex = '" . $sex . "' AND `type` = " . $type;
-
+            if ( $sexTypes !== null ) {
+                if ( $sex !== 'Male' || $sex !== 'Female' ) {
+                    if ( count($sexTypes) === 1 ) {
+                        if ( $sexTypes[0] === 'Male' ) {
+                            $string = $string . ' AND sex = "Male" ';
+                        }
+                        if ( $sexTypes[0] === 'Female' ) {
+                            $string = $string . ' AND sex = "Female" ';
+                        }
+                    }
+                }
+            }
+            
             if ( $colors !== null ) {
                 if ( count($colors) > 1 ) {
                     $count = count($colors);
@@ -156,9 +173,13 @@ class ProductRepository implements ProductRepositoryInterface
     }
 
     public function getCount(int $page, string $sex, int $type, $priceMin = null,
-                             $priceMax = null, $colors = null, $dimentions = null): int
+                             $priceMax = null, $colors = null, $dimentions = null, $sexTypes = null): int
     {
-        $string = 'sex = "' . $sex . '" AND type = ' . $type;
+        if ( $sex === 'Male' || $sex === 'Female' ) {
+            $string = " sex = '" . $sex . "' AND `type` = " . $type;
+        }else if ( $sex === 'promotion' ) {
+            $string = ' promotion = true AND `type` = ' . $type;
+        }
 
 
         if ( $colors !== null ) {

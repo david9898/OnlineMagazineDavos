@@ -15,6 +15,10 @@ aside .dimention {
     flex-direction: column;
     margin-top: 30px;
 }
+aside .sex {
+    display: flex;
+    flex-direction: column;
+}
 body > main > aside > div > form > input.btn.btn-success {
     border: none;
     padding: 15px;

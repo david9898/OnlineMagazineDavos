@@ -15,6 +15,11 @@ if ( $_SESSION['search_params']['dimentions'] !== null ) {
     $dimentions = [];
 }
 
+if ( $_SESSION['search_params']['sexTypes'] !== null ) {
+    $sexTypes = $_SESSION['search_params']['sexTypes'];
+}else {
+    $sexTypes = [];
+}
 if ( !empty($_SESSION['search_params']['priceMin']) && isset($_SESSION['search_params']['priceMin']) ) {
     $priceMin = $_SESSION['search_params']['priceMin'];
 }else {
@@ -32,6 +37,33 @@ if ( !empty($_SESSION['search_params']['priceMax']) && isset($_SESSION['search_p
     <aside>
         <div class="form">
             <form method="post" class="product_search">
+                <?php if ( $_GET['sex'] !== 'mens' && $_GET['sex'] !== 'women' ): ?>
+                    <div class="sex">
+                        <h3>Пол</h3>
+                        <?php if (in_array('Male', $sexTypes)): ?>
+                            <label>
+                                <input type="checkbox" name="Male" class="color_checkbox" checked />Мъже
+                            </label>
+                        <?php else: ?>
+                            <label>
+                                <input type="checkbox" name="Male" class="color_checkbox" />Мъже
+                            </label>
+                        <?php endif; ?>
+                        <?php if (in_array('Female', $sexTypes)): ?>
+                            <label>
+                                <input type="checkbox" name="Female" class="color_checkbox" checked />Жени
+                            </label>
+                        <?php else: ?>
+                            <label>
+                                <input type="checkbox" name="Female" class="color_checkbox" />Жени
+                            </label>
+                        <?php endif; ?>
+                        
+                        
+                        <br />
+                        <br />
+                    </div>
+                <?php endif; ?>
                 <div class="color">
                     <h3>Цвят</h3>
                     <?php if ( in_array('1', $colors) ): ?>
@@ -98,7 +130,7 @@ if ( !empty($_SESSION['search_params']['priceMax']) && isset($_SESSION['search_p
                 </div>
                 <div class="dimention">
                     
-                    <?php if ( $_GET['type'] === 'shoes' && $_GET['sex'] === 'mens' ): ?>
+                    <?php if ( $_GET['type'] === 'shoes' && $_GET['sex'] === 'mens' || $_GET['sex'] === 'promotion' ): ?>
                         <h3>Размери</h3>
                         <?php if ( in_array('dimention40', $dimentions) ): ?>
                             <label>
@@ -165,7 +197,7 @@ if ( !empty($_SESSION['search_params']['priceMax']) && isset($_SESSION['search_p
                         <?php endif; ?>
                     <?php endif; ?>
                     
-                    <?php if ( $_GET['type'] === 'shoes' && $_GET['sex'] === 'women' ): ?>
+                    <?php if ( $_GET['type'] === 'shoes' && $_GET['sex'] === 'women' || $_GET['sex'] === 'promotion'): ?>
                         <h3>Размери</h3>
                         <?php if ( in_array('dimention34', $dimentions) ): ?>
                             <label>

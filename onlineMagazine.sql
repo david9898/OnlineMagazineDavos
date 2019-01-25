@@ -104,7 +104,7 @@ CREATE TABLE IF NOT EXISTS `dimentions` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Дъмп данни за таблица onlinemagazine.dimentions: ~29 rows (approximately)
+-- Дъмп данни за таблица onlinemagazine.dimentions: ~30 rows (approximately)
 /*!40000 ALTER TABLE `dimentions` DISABLE KEYS */;
 INSERT INTO `dimentions` (`id`, `small_dimention`, `medium_dimention`, `large_dimention`, `extra_large_dimention`, `dimention_34`, `dimention_35`, `dimention_36`, `dimention_37`, `dimention_38`, `dimention_39`, `dimention_40`, `dimention_41`, `dimention_42`, `dimention_43`, `dimention_44`, `dimention_45`, `dimention_46`) VALUES
 	(18, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 8, 0, 3, 5, 15),
@@ -123,7 +123,7 @@ INSERT INTO `dimentions` (`id`, `small_dimention`, `medium_dimention`, `large_di
 	(31, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 8, 0, 3, 5, 15),
 	(32, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 5, 8, 0, 3, 5, 15),
 	(33, 5, 3, 8, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-	(34, 5, 3, 8, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+	(34, 5, 0, 8, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
 	(35, 5, 3, 8, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
 	(36, 5, 3, 8, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
 	(37, 5, 3, 8, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
@@ -135,7 +135,16 @@ INSERT INTO `dimentions` (`id`, `small_dimention`, `medium_dimention`, `large_di
 	(44, 5, 3, 8, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
 	(45, 5, 3, 8, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
 	(46, 5, 3, 8, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-	(47, 5, 3, 8, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+	(47, 5, 3, 8, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+	(48, 5, 7, 6, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+	(49, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 9, 4, 6, 8, 9, 8),
+	(50, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 5, 6, 7, 2, 3),
+	(51, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 5, 52, 0, 6, 0, 0),
+	(52, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 3, 0, 6, 8),
+	(53, 0, 0, 0, 0, 8, 5, 36, 41, 23, 85, 0, 0, 0, 0, 0, 0, 0),
+	(54, 0, 0, 0, 0, 0, 5, 0, 2, 5, 1, 0, 0, 0, 0, 0, 0, 0),
+	(55, 0, 0, 0, 0, 8, 2, 2, 2, 6, 4, 0, 0, 0, 0, 0, 0, 0),
+	(56, 0, 0, 0, 0, 4, 4, 4, 3, 5, 0, 0, 0, 0, 0, 0, 0, 0);
 /*!40000 ALTER TABLE `dimentions` ENABLE KEYS */;
 
 -- Дъмп структура за таблица onlinemagazine.images
@@ -147,7 +156,7 @@ CREATE TABLE IF NOT EXISTS `images` (
   CONSTRAINT `FK_image` FOREIGN KEY (`id`) REFERENCES `products` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Дъмп данни за таблица onlinemagazine.images: ~24 rows (approximately)
+-- Дъмп данни за таблица onlinemagazine.images: ~26 rows (approximately)
 /*!40000 ALTER TABLE `images` DISABLE KEYS */;
 INSERT INTO `images` (`id`, `image`) VALUES
 	(18, '610c6efd9faca3e76e0d3aead7cc2f25.jpg'),
@@ -173,13 +182,26 @@ INSERT INTO `images` (`id`, `image`) VALUES
 	(45, 'f75885811d9153b58b3dc0e046db55cf.jpg'),
 	(46, '27489efbb6f09630f83d4218a9d0e0b3.jpg'),
 	(47, '10028d5a8654bdf9fa565e082d08b9c6.jpg'),
-	(47, '7597029f15a1d8258a3675d62e10a789.jpg');
+	(47, '7597029f15a1d8258a3675d62e10a789.jpg'),
+	(48, '079a89d70687db8d62f4debf1bb44673.jpg'),
+	(48, 'fda94b88b982a015f2ff5dc7ecd7d2a5.jpg'),
+	(49, '0aee0690b1a161057ac1bacc6d30cbc8.jpg'),
+	(50, '3fa3a05f32b78ce828971cec51185d13.jpg'),
+	(51, '0a9fb51f2513352ac1c3ceabbaff2d88.jpg'),
+	(52, '7bd67b6b408e6285a9b567b40ebebc29.jpg'),
+	(53, 'd7d03372b30f8895e033bfa52a5b1e55.jpg'),
+	(54, 'b617504b52a30785e34a5960df9a7f2d.jpg'),
+	(55, 'dafed5d0afe92b0cff2682650d552f7e.jpg'),
+	(56, '724a59b6bd9ede9e5861cb65ad248925.jpg');
 /*!40000 ALTER TABLE `images` ENABLE KEYS */;
 
 -- Дъмп структура за procedure onlinemagazine.procedure_add_sale
 DELIMITER //
 CREATE DEFINER=`root`@`localhost` PROCEDURE `procedure_add_sale`(
 	IN `id` INT
+
+,
+	IN `cookie` VARCHAR(50)
 )
 BEGIN
 
@@ -189,7 +211,7 @@ BEGIN
 	
 	UPDATE products SET `sells` = @b WHERE products.id = id;
 
-
+	INSERT INTO sells(product_id, cookie) VALUES (id, cookie);
 END//
 DELIMITER ;
 
@@ -264,14 +286,16 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `procedure_insert_product`(
 
 
 
+,
+	IN `description` VARCHAR(255)
 )
 BEGIN
 	
 	START TRANSACTION;
 	
 		INSERT INTO products(price, front_image_1, front_image_2, 
-		color, sex, promotion_percent, promotion, type) 
-		VALUES (price, front_image_1, front_image_2, color, sex, promotion_percent, promotion, type);
+		color, sex, promotion_percent, promotion, type, description) 
+		VALUES (price, front_image_1, front_image_2, color, sex, promotion_percent, promotion, type, description);
 		
 		SELECT `id` FROM products ORDER BY `id` DESC LIMIT 1 INTO @id;
 		
@@ -367,6 +391,7 @@ CREATE TABLE IF NOT EXISTS `products` (
   `sex` enum('Male','Female') NOT NULL,
   `promotion_percent` tinyint(4) NOT NULL DEFAULT '0',
   `promotion` enum('true','false') NOT NULL DEFAULT 'false',
+  `description` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `front_image_1` (`front_image_1`),
   UNIQUE KEY `front_image_2` (`front_image_2`),
@@ -374,40 +399,49 @@ CREATE TABLE IF NOT EXISTS `products` (
   KEY `FK_type` (`type`),
   CONSTRAINT `FK_color` FOREIGN KEY (`color`) REFERENCES `colors` (`color_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `FK_type` FOREIGN KEY (`type`) REFERENCES `types` (`type_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=57 DEFAULT CHARSET=utf8;
 
--- Дъмп данни за таблица onlinemagazine.products: ~29 rows (approximately)
+-- Дъмп данни за таблица onlinemagazine.products: ~30 rows (approximately)
 /*!40000 ALTER TABLE `products` DISABLE KEYS */;
-INSERT INTO `products` (`id`, `price`, `front_image_1`, `front_image_2`, `reviews`, `sells`, `color`, `type`, `sex`, `promotion_percent`, `promotion`) VALUES
-	(18, 253, '90727bcd64acc13f5a3cf5a8664c5ccb.jpg', 'd62fb3beaf4fcd8379fba8cfb46c39f4.jpg', 45, 7, 5, 2, 'Male', 17, 'true'),
-	(19, 150, 'c9a3664831b26034daee57f3b599132f.jpg', 'b9854226afc867a17b175d53b54ccc76.jpg', 13, 0, 4, 2, 'Male', 0, 'false'),
-	(20, 175, '010b6822f43c6b56b944341371c7c209.jpg', 'c3b4ea6b7b5e552a2f8250716e64247c.jpg', 15, 0, 5, 2, 'Male', 5, 'true'),
-	(21, 87, '0f22886d23a6088eabbf8b50c97164ae.jpg', 'd38a5718dfa44002757e187ae32acd12.jpg', 22, 0, 4, 2, 'Male', 0, 'false'),
-	(22, 99, 'e2d4af91c292ed8f1d201998d88f20f9.jpg', '90cd35eae5d31e9d4ff29f4328ea29a6.jpg', 22, 0, 5, 2, 'Male', 9, 'true'),
-	(23, 145, '69b1ca2e283f3428ec68fee64abeb39c.jpg', 'f82fd02e8e1d79169ee30bd7fcb90afe.jpg', 15, 0, 2, 2, 'Male', 9, 'true'),
-	(24, 170, 'bb3d9040b8b29decb4b42d22953d22d4.jpg', 'd4e69fb24a7103c812f3dca61e0af532.jpg', 19, 13, 1, 2, 'Male', 14, 'true'),
-	(25, 124, 'c8d9de3ce2d2c05ae4e2c52333edee5f.jpg', '045542a5862ebcccf2223c9269b83223.jpg', 16, 0, 5, 2, 'Male', 19, 'true'),
-	(26, 187, '70c2b86018940375631da5a00d523681.jpg', 'e7326fab92c7727ddba7d5ab2c4a175d.jpg', 17, 0, 2, 2, 'Male', 0, 'false'),
-	(27, 99, 'eff3eedb31c2fb4a0488cae0b633c0b5.jpg', '571ac42ac35e0c1bbb42a2d293c61eeb.jpg', 13, 0, 4, 2, 'Male', 0, 'false'),
-	(28, 160, 'a424de5f42a462f49839a9d87779faa6.jpg', '06723f1fd559e6c7df5c1d7d172fba80.jpg', 12, 0, 4, 2, 'Male', 0, 'false'),
-	(29, 250, 'ccb0390b65cf18fb15ae835fa3d8e3c8.jpg', '12ffa712fefd9f490d0527873e17c89a.jpg', 14, 0, 4, 2, 'Male', 0, 'false'),
-	(30, 150, '1af6348e38c5c254adf15d0ff75ce38c.jpg', 'ba6e99b36395491ab94f814894e91621.jpg', 23, 0, 1, 2, 'Male', 0, 'false'),
-	(31, 211, '975f3e1a7e7ef6c089dcdb8a42f3f150.jpg', '568fb376f61fa7dff0da57754f0c88e2.jpg', 19, 0, 1, 2, 'Male', 0, 'false'),
-	(32, 150, 'aa2c3fec2818975133d48036f3012685.jpg', '091896800e8abd68738e1bfd7897a8d6.jpg', 18, 1, 2, 2, 'Male', 0, 'false'),
-	(33, 25, '589b63b1c6565c7470d34aeb59c6b2a1.jpg', 'ac732cd449bbe4b0eb8bd8a21008fba6.jpg', 25, 0, 5, 4, 'Male', 5, 'true'),
-	(34, 25, '5b618d5f5f88b81a5f71bf827b84a8fa.jpg', '2a69f9c149958f0f8b58fa3d93f2d37f.jpg', 15, 1, 1, 4, 'Male', 0, 'false'),
-	(35, 36, '415c410f3d91d4bc9d93b4407458bf5a.jpg', '9b35bef41265564ddc214bfabbd0e68c.jpg', 13, 0, 2, 4, 'Male', 0, 'false'),
-	(36, 42, '5a3333e7889bc91aa50d15d28d592c1d.jpg', 'b1e0899cd0e67899be7d596f73106610.jpg', 44, 0, 5, 4, 'Male', 0, 'false'),
-	(37, 52, '0fbe2e9f0c1c7850eab15eed7c48c7c1.jpg', '1bd78b4397e8327c7c01b60c4f677aeb.jpg', 14, 0, 4, 1, 'Female', 23, 'false'),
-	(38, 54, 'c9dcdc12100f3eba805345b57f365813.jpg', 'f71efb533d0d5a90b5bd4919eb09e3e7.jpg', 17, 5, 5, 1, 'Female', 4, 'true'),
-	(39, 36, 'ba3282f56b2b4e7ff161e19530d9603f.jpg', '66a1c69c9b33a3d1174ae725852e0c9a.jpg', 12, 0, 6, 1, 'Female', 0, 'false'),
-	(40, 23, 'e97556513651d932236044e2f7b221ca.jpg', '5ac0624f8dab0372da6c02638c6a0a69.jpg', 14, 0, 1, 1, 'Female', 0, 'false'),
-	(42, 278, 'a6c4af6ffdbc49de86c356c6f33cf3c7.jpg', '5fe7e213ce2b73d581e262aaf42e56a1.jpg', 3, 0, 2, 3, 'Male', 0, 'false'),
-	(43, 180, 'f44d3e0fee55f7661184d00c64634787.jpg', 'b0d2ad321f0ff4bffcb072f05c0d77c4.jpg', 1, 0, 5, 3, 'Male', 0, 'false'),
-	(44, 290, '18392198d96e7a638a28265ffcbcaeaf.jpg', 'a01825136d1585ea0b2ff2d887037d55.jpg', 1, 0, 5, 3, 'Male', 8, 'true'),
-	(45, 320, '70ec2bc881828f777ddb7f5793233209.jpg', '167c903b295965002c5f690240ab7b03.jpg', 3, 0, 5, 3, 'Male', 0, 'false'),
-	(46, 449, '39f2276764bdd75ded16570ed36247ac.jpg', 'c5161a199784cf7d48aaec870670f306.jpg', 2, 0, 2, 3, 'Male', 0, 'false'),
-	(47, 399, '6e0340a66a800906ca4b3b7f099a58ae.jpg', 'e3104c5298ec99e0e16d2d64c3d0a45d.jpg', 1, 0, 4, 3, 'Male', 0, 'false');
+INSERT INTO `products` (`id`, `price`, `front_image_1`, `front_image_2`, `reviews`, `sells`, `color`, `type`, `sex`, `promotion_percent`, `promotion`, `description`) VALUES
+	(18, 253, '90727bcd64acc13f5a3cf5a8664c5ccb.jpg', 'd62fb3beaf4fcd8379fba8cfb46c39f4.jpg', 45, 7, 5, 2, 'Male', 17, 'true', 'Мъжки Обувки'),
+	(19, 150, 'c9a3664831b26034daee57f3b599132f.jpg', 'b9854226afc867a17b175d53b54ccc76.jpg', 15, 0, 4, 2, 'Male', 0, 'false', 'Мъжки Обувки'),
+	(20, 175, '010b6822f43c6b56b944341371c7c209.jpg', 'c3b4ea6b7b5e552a2f8250716e64247c.jpg', 15, 0, 5, 2, 'Male', 5, 'true', 'Мъжки Обувки'),
+	(21, 87, '0f22886d23a6088eabbf8b50c97164ae.jpg', 'd38a5718dfa44002757e187ae32acd12.jpg', 22, 0, 4, 2, 'Male', 0, 'false', 'Мъжки Обувки'),
+	(22, 99, 'e2d4af91c292ed8f1d201998d88f20f9.jpg', '90cd35eae5d31e9d4ff29f4328ea29a6.jpg', 23, 0, 5, 2, 'Male', 9, 'true', 'Мъжки Обувки'),
+	(23, 145, '69b1ca2e283f3428ec68fee64abeb39c.jpg', 'f82fd02e8e1d79169ee30bd7fcb90afe.jpg', 15, 0, 2, 2, 'Male', 9, 'true', 'Мъжки Обувки'),
+	(24, 170, 'bb3d9040b8b29decb4b42d22953d22d4.jpg', 'd4e69fb24a7103c812f3dca61e0af532.jpg', 19, 13, 1, 2, 'Male', 14, 'true', 'Мъжки Обувки'),
+	(25, 124, 'c8d9de3ce2d2c05ae4e2c52333edee5f.jpg', '045542a5862ebcccf2223c9269b83223.jpg', 20, 0, 5, 2, 'Male', 19, 'true', 'Мъжки Обувки'),
+	(26, 187, '70c2b86018940375631da5a00d523681.jpg', 'e7326fab92c7727ddba7d5ab2c4a175d.jpg', 22, 0, 2, 2, 'Male', 0, 'false', 'Мъжки Обувки'),
+	(27, 99, 'eff3eedb31c2fb4a0488cae0b633c0b5.jpg', '571ac42ac35e0c1bbb42a2d293c61eeb.jpg', 14, 0, 4, 2, 'Male', 0, 'false', 'Мъжки Обувки'),
+	(28, 160, 'a424de5f42a462f49839a9d87779faa6.jpg', '06723f1fd559e6c7df5c1d7d172fba80.jpg', 16, 2, 4, 2, 'Male', 0, 'false', 'Мъжки Обувки'),
+	(29, 250, 'ccb0390b65cf18fb15ae835fa3d8e3c8.jpg', '12ffa712fefd9f490d0527873e17c89a.jpg', 21, 0, 4, 2, 'Male', 0, 'false', 'Мъжки Обувки'),
+	(30, 150, '1af6348e38c5c254adf15d0ff75ce38c.jpg', 'ba6e99b36395491ab94f814894e91621.jpg', 24, 1, 1, 2, 'Male', 0, 'false', 'Мъжки Обувки'),
+	(31, 211, '975f3e1a7e7ef6c089dcdb8a42f3f150.jpg', '568fb376f61fa7dff0da57754f0c88e2.jpg', 26, 2, 1, 2, 'Male', 0, 'false', 'Мъжки Обувки'),
+	(32, 150, 'aa2c3fec2818975133d48036f3012685.jpg', '091896800e8abd68738e1bfd7897a8d6.jpg', 31, 7, 2, 2, 'Male', 0, 'false', 'Мъжки Обувки'),
+	(33, 25, '589b63b1c6565c7470d34aeb59c6b2a1.jpg', 'ac732cd449bbe4b0eb8bd8a21008fba6.jpg', 29, 0, 5, 4, 'Male', 5, 'true', 'Мъжка Тениска'),
+	(34, 25, '5b618d5f5f88b81a5f71bf827b84a8fa.jpg', '2a69f9c149958f0f8b58fa3d93f2d37f.jpg', 16, 2, 1, 4, 'Male', 0, 'false', 'Мъжка Тениска'),
+	(35, 36, '415c410f3d91d4bc9d93b4407458bf5a.jpg', '9b35bef41265564ddc214bfabbd0e68c.jpg', 13, 0, 2, 4, 'Male', 0, 'false', 'Мъжка Тениска'),
+	(36, 42, '5a3333e7889bc91aa50d15d28d592c1d.jpg', 'b1e0899cd0e67899be7d596f73106610.jpg', 48, 0, 5, 4, 'Male', 0, 'false', 'Мъжка Тениска'),
+	(37, 52, '0fbe2e9f0c1c7850eab15eed7c48c7c1.jpg', '1bd78b4397e8327c7c01b60c4f677aeb.jpg', 14, 0, 4, 1, 'Female', 23, 'false', 'Дамски Панталон'),
+	(38, 54, 'c9dcdc12100f3eba805345b57f365813.jpg', 'f71efb533d0d5a90b5bd4919eb09e3e7.jpg', 18, 5, 5, 1, 'Female', 4, 'true', 'Дамски Панталон'),
+	(39, 36, 'ba3282f56b2b4e7ff161e19530d9603f.jpg', '66a1c69c9b33a3d1174ae725852e0c9a.jpg', 19, 0, 6, 1, 'Female', 0, 'false', 'Дамски Панталон'),
+	(40, 23, 'e97556513651d932236044e2f7b221ca.jpg', '5ac0624f8dab0372da6c02638c6a0a69.jpg', 16, 0, 1, 1, 'Female', 0, 'false', 'Дамски Панталон'),
+	(42, 278, 'a6c4af6ffdbc49de86c356c6f33cf3c7.jpg', '5fe7e213ce2b73d581e262aaf42e56a1.jpg', 3, 0, 2, 3, 'Male', 0, 'false', 'Мъжки Костюм'),
+	(43, 180, 'f44d3e0fee55f7661184d00c64634787.jpg', 'b0d2ad321f0ff4bffcb072f05c0d77c4.jpg', 1, 0, 5, 3, 'Male', 0, 'false', 'Мъжки Костюм'),
+	(44, 290, '18392198d96e7a638a28265ffcbcaeaf.jpg', 'a01825136d1585ea0b2ff2d887037d55.jpg', 4, 0, 5, 3, 'Male', 8, 'true', 'Мъжки Костюм'),
+	(45, 320, '70ec2bc881828f777ddb7f5793233209.jpg', '167c903b295965002c5f690240ab7b03.jpg', 5, 0, 5, 3, 'Male', 0, 'false', 'Мъжки Костюм'),
+	(46, 449, '39f2276764bdd75ded16570ed36247ac.jpg', 'c5161a199784cf7d48aaec870670f306.jpg', 3, 1, 2, 3, 'Male', 0, 'false', 'Мъжки Костюм'),
+	(47, 399, '6e0340a66a800906ca4b3b7f099a58ae.jpg', 'e3104c5298ec99e0e16d2d64c3d0a45d.jpg', 2, 0, 4, 3, 'Male', 0, 'false', 'Мъжки Костюм'),
+	(48, 489, '89a584a65209b458314e8f9cd5568176.jpg', '4ee1bc80757cdb38ec6553ab2df60949.jpg', 1, 0, 2, 3, 'Male', 0, 'false', 'Мъжки Костюм'),
+	(49, 199, '7fca3dd0d89120beff500ee40e073f1e.jpg', 'c890b51c69f4f8b3a9716d89e0daec56.jpg', 0, 0, 5, 2, 'Male', 7, 'true', 'Мъжки Обувки'),
+	(50, 283, '2bbda5e9c933ca93a7842159fcfe3e55.jpg', '5706b3d33430fc937cfe881b4b55def8.jpg', 1, 0, 4, 2, 'Male', 0, 'true', 'Мъжки Обувки'),
+	(51, 300, '99722ec4356a23d299879e92472534e4.jpg', '129d75e9591b927492318cf46ff859eb.jpg', 2, 0, 2, 2, 'Male', 9, 'true', 'Мъжки Обувки'),
+	(52, 320, '140d2afaba0a1331a474baf1587558c8.jpg', 'c60613e03b3442118ed328fc56002190.jpg', 0, 0, 4, 2, 'Male', 8, 'true', 'Мъжки Обувки'),
+	(53, 150, '82de001963e95178208c76458a2631cf.jpg', 'acb0aaeea3a9eeec055ad6dd4afe2c5e.jpg', 0, 0, 2, 2, 'Female', 10, 'true', 'Дамски Обувки'),
+	(54, 180, 'db1f28094603ff9d2ab2fcab4eb1d8fa.jpg', 'c7ab40cc4e3605ffe57940cba754d547.jpg', 0, 0, 6, 2, 'Female', 5, 'true', 'Дамски Обувки'),
+	(55, 220, '6c55068445b2c32514fe090cb9d7f468.jpg', 'fe96b7ad88b1dd9a56c4dbd4ab7c6b1a.jpg', 2, 0, 6, 2, 'Female', 6, 'true', 'Дамски Обувки'),
+	(56, 179, 'e0902dee052eb06459f58fe3a00a3c97.jpg', '6b6a09c0f5ed2af8bccacbb8c4fec92e.jpg', 0, 0, 2, 2, 'Female', 8, 'true', 'Дамски Обувки');
 /*!40000 ALTER TABLE `products` ENABLE KEYS */;
 
 -- Дъмп структура за view onlinemagazine.product_view
@@ -422,6 +456,7 @@ CREATE TABLE `product_view` (
 	`sex` ENUM('Male','Female') NOT NULL COLLATE 'utf8_general_ci',
 	`price` INT(11) NOT NULL,
 	`colorName` VARCHAR(50) NOT NULL COLLATE 'utf8_general_ci',
+	`description` VARCHAR(255) NOT NULL COLLATE 'utf8_general_ci',
 	`promotion` ENUM('true','false') NOT NULL COLLATE 'utf8_general_ci',
 	`promotionPercent` TINYINT(4) NOT NULL,
 	`smallDimention` SMALLINT(6) NOT NULL,
@@ -469,11 +504,24 @@ CREATE TABLE IF NOT EXISTS `sells` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `product_id` int(11) NOT NULL,
   `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `cookie` varchar(300) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
--- Дъмп данни за таблица onlinemagazine.sells: ~0 rows (approximately)
+-- Дъмп данни за таблица onlinemagazine.sells: ~1 rows (approximately)
 /*!40000 ALTER TABLE `sells` DISABLE KEYS */;
+INSERT INTO `sells` (`id`, `product_id`, `date`, `cookie`) VALUES
+	(1, 46, '2019-01-22 01:11:00', '40b244112641dd78dd4f93b6c9190dd46e0099194d5a44257b'),
+	(2, 28, '2019-01-22 12:57:37', '40b244112641dd78dd4f93b6c9190dd46e0099194d5a44257b'),
+	(3, 32, '2019-01-22 12:57:37', '40b244112641dd78dd4f93b6c9190dd46e0099194d5a44257b'),
+	(4, 28, '2019-01-22 14:09:59', '06df05371981a237d0ed11472fae7c94c9ac0eff1d05413516'),
+	(5, 32, '2019-01-22 14:10:00', '06df05371981a237d0ed11472fae7c94c9ac0eff1d05413516'),
+	(6, 30, '2019-01-22 14:14:37', '06df05371981a237d0ed11472fae7c94c9ac0eff1d05413516'),
+	(7, 32, '2019-01-22 14:14:37', '06df05371981a237d0ed11472fae7c94c9ac0eff1d05413516'),
+	(8, 31, '2019-01-23 12:45:05', '06df05371981a237d0ed11472fae7c94c9ac0eff1d05413516'),
+	(9, 32, '2019-01-23 12:45:06', '06df05371981a237d0ed11472fae7c94c9ac0eff1d05413516'),
+	(10, 31, '2019-01-23 12:48:54', '06df05371981a237d0ed11472fae7c94c9ac0eff1d05413516'),
+	(11, 32, '2019-01-23 12:48:54', '06df05371981a237d0ed11472fae7c94c9ac0eff1d05413516');
 /*!40000 ALTER TABLE `sells` ENABLE KEYS */;
 
 -- Дъмп структура за таблица onlinemagazine.towns
@@ -530,19 +578,23 @@ CREATE TABLE IF NOT EXISTS `users` (
   UNIQUE KEY `email` (`email`),
   KEY `FK_town` (`town`),
   CONSTRAINT `FK_town` FOREIGN KEY (`town`) REFERENCES `towns` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 -- Дъмп данни за таблица onlinemagazine.users: ~2 rows (approximately)
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` (`id`, `email`, `first_name`, `last_name`, `password`, `username`, `born_on`, `first_login`, `town`, `cookie`, `status`) VALUES
 	(1, 'david_786@abv.bg', 'David', 'Ivanov', 'd404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db', 'testoviqasddddd', '1998-12-15 13:17:37', '2018-12-15 13:17:38', 4, 'fksjanfkjdnsafkndjsa', 'admin'),
-	(2, 'david@abv.bg', 'David', 'Ivanov', 'd404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db', NULL, '1998-05-04 00:00:00', '2018-12-23 13:22:47', 2, '40b244112641dd78dd4f93b6c9190dd46e0099194d5a44257b7efad6ef9ff4683da1eda0244448cb343aa688f5d3efd7314dafe580ac0bcbf115aeca9e8dc114', 'user');
+	(2, 'david@abv.bg', 'David', 'Ivanov', 'd404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db', NULL, '1998-05-04 00:00:00', '2018-12-23 13:22:47', 2, '40b244112641dd78dd4f93b6c9190dd46e0099194d5a44257b7efad6ef9ff4683da1eda0244448cb343aa688f5d3efd7314dafe580ac0bcbf115aeca9e8dc114', 'user'),
+	(3, NULL, NULL, NULL, NULL, NULL, NULL, '2019-01-22 13:31:16', NULL, '3bafbf08882a2d10133093a1b8433f50563b93c14acd05b79028eb1d12799027241450980651994501423a66c276ae26c43b739bc65c4e16b10c3af6c202aebb', 'guest'),
+	(4, NULL, NULL, NULL, NULL, NULL, NULL, '2019-01-22 13:31:56', NULL, 'a321d8b405e3ef2604959847b36d171eebebc4a8941dc70a4784935a4fca5d5813de84dfa049f06549aa61b20848c1633ce81b675286ea8fb53db240d831c568', 'guest'),
+	(5, NULL, NULL, NULL, NULL, NULL, NULL, '2019-01-22 13:45:06', NULL, '06df05371981a237d0ed11472fae7c94c9ac0eff1d05413516710d17b10a4fb6f4517bda4a695f02d0a73dd4db543b4653df28f5d09dab86f92ffb9b86d01e25', 'guest'),
+	(6, NULL, NULL, NULL, NULL, NULL, NULL, '2019-01-22 15:05:49', NULL, '3c9ad55147a7144f6067327c3b82ea70e7c5426add9ceea4d07dc2902239bf9e049b88625eb65d014a7718f79354608cab0921782c643f0208983fffa3582e40', 'guest');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
 -- Дъмп структура за view onlinemagazine.product_view
 -- Removing temporary table and create final VIEW structure
 DROP TABLE IF EXISTS `product_view`;
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `product_view` AS SELECT id, front_image_1 AS frontImage1, front_image_2 AS frontImage2, reviews, color, type, sex, price, colors.color_name AS colorName,
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `product_view` AS SELECT id, front_image_1 AS frontImage1, front_image_2 AS frontImage2, reviews, color, type, sex, price, colors.color_name AS colorName, description,
 promotion, promotion_percent AS promotionPercent, dimentions.small_dimention AS smallDimention, dimentions.medium_dimention AS mediumDimention, 
 dimentions.large_dimention AS largeDimention, dimentions.extra_large_dimention AS extraLargeDimention,
 dimentions.dimention_34 AS dimention34, dimentions.dimention_35 AS dimention35, dimentions.dimention_36 AS dimention36, dimentions.dimention_37 AS dimention37,

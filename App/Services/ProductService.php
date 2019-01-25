@@ -232,6 +232,8 @@ class ProductService implements ProductServiceInterface
             $sex = 'Male';
         }else if ( $getArr['sex'] === 'women' ) {
             $sex = 'Female';
+        }else if ( $getArr['sex'] === 'promotion' ) {
+            $sex = 'promotion';
         }
 
         if ( isset($_SESSION['search_params']['sex']) ) {
@@ -363,12 +365,20 @@ class ProductService implements ProductServiceInterface
                     $priceMax = $_SESSION['search_params']['priceMax'];
                 }
             }
+            
+            if ( isset($postArr['Male']) ) {
+                $sexTypes[] = 'Male';
+            }
+            if ( isset($postArr['Female']) ) {
+                $sexTypes[] = 'Female';
+            }
 
             $_SESSION['search_params']['priceMin'] = $priceMin;
             $_SESSION['search_params']['priceMax'] = $priceMax;
             $_SESSION['search_params']['colors'] = $colors;
             $_SESSION['search_params']['dimentions'] = $dimentions;
-
+            $_SESSION['search_params']['sexTypes'] = $sexTypes;
+            
             header("Location: " . 'http://localhost:82/OnlineMagazine/' . $_GET['sex'] . '/' . $_GET['type'] . '/' . 1 );
         }else {
             if ( !isset($_SESSION['search_params']['priceMin']) ) {
@@ -383,14 +393,17 @@ class ProductService implements ProductServiceInterface
             if ( !isset($_SESSION['search_params']['dimentions']) ) {
                 $_SESSION['search_params']['dimentions'] = null;
             }
+            if ( !isset($_SESSION['search_params']['sexTypes']) ) {
+                $_SESSION['search_params']['sexTypes'] = null;
+            }
         }
 
 
         $pageProducts = $this->productRepo->getProductsForPagination($page, $sex, $type, $_SESSION['search_params']['priceMin'], $_SESSION['search_params']['priceMax'],
-                                                                    $_SESSION['search_params']['colors'], $_SESSION['search_params']['dimentions']);
+                                                                    $_SESSION['search_params']['colors'], $_SESSION['search_params']['dimentions'], $_SESSION['search_params']['sexTypes']);
 
         $pageAll = $this->productRepo->getCount($page, $sex, $type, $_SESSION['search_params']['priceMin'], $_SESSION['search_params']['priceMax'],
-                                                $_SESSION['search_params']['colors'], $_SESSION['search_params']['dimentions']);
+                                                $_SESSION['search_params']['colors'], $_SESSION['search_params']['dimentions'], $_SESSION['search_params']['sexTypes']);
         $pagination = new PaginationDTO();
         $pagination->setAllPages($pageAll);
         $pagination->setProductArr($pageProducts);

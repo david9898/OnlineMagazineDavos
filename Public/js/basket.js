@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    sessionStorage.setItem('buyFromBasket', 'false')
     removeFromBasket()
     setCountValue()
     setDimentionValue()
